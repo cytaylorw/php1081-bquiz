@@ -40,6 +40,14 @@ switch($do){
     case "login":
         echo (rc($table,$_POST))? 1:0;
         break;
+    case "get":
+        $rows=find($table,["sh"=>1]);
+        $mvs=[];
+        foreach($rows as $m){
+            $mvs[]=$m[$_GET['get']];
+        }
+        echo json_encode($mvs);
+        break;
     default:
         echo "test";
 }

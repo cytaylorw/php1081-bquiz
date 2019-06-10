@@ -36,6 +36,37 @@
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+					$main=find("menu",["sh"=>1]);
+					foreach($main as $m){
+
+						?>
+					<div class="menuw cent">
+						<div class="mainmu">
+							<a style="color:#000; font-size:13px; text-decoration:none;" href="<?=$m['text'];?>">
+							<?=$m['file'];?> 
+							</a>
+						<?php
+							$sub=find("menu",["pid"=>$m['id']]);
+							if(count($sub)>0){
+								echo "<div class='mw'>";
+								foreach($sub as $s){
+						?>
+							<div class="mainmu2">
+								<a style="color:#000; font-size:13px; text-decoration:none;" href="<?=$s['text'];?>">
+								<?=$s['file'];?> 
+								</a>
+							</div>
+						<?php
+								}
+								echo "</div>";
+							}
+						?>
+						</div>
+					<?php
+					echo "</div>";
+					}
+					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :<?=find("total")[0]['text'];?> </span>
@@ -82,16 +113,26 @@
 					onclick="lo('index.php?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="btn cent" onclick="pp(1)"><img src="./icon/up.jpg"></div>
+					<?php
+					$img=find("image",["sh"=>1]);
+					foreach($img as $key =>$i){
+						echo "<div class='img cent im' id='ssaa$key'>";
+						echo "<img src='./img/".$i['file']."'>";
+						echo "</div>";
+					}
+					?>
+					<div class="btn cent" onclick="pp(2)"><img src="./icon/dn.jpg"></div>
 					<script>
 						var nowpage = 0,
-							num = 0;
+							num = <?=count($img);?>;
 
 						function pp(x) {
 							var s, t;
-							if (x == 1 && nowpage - 1 >= 0) {
+							if (x == 1 && nowpage > 0) {
 								nowpage--;
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							if (x == 2 && nowpage < num - 3) {
 								nowpage++;
 							}
 							$(".im").hide()

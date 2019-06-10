@@ -16,7 +16,11 @@
                     ?>
                 </tr>
                 <?php
-                $rows=find($on);
+                $div=4;
+                $pages=ceil(rc($on)/$div);
+                $now=(!empty($_GET['p']))?$_GET['p']:1;
+                $start=($now-1)*$div;
+                $rows=limit($on,$start,$div);
                 foreach($rows as $r){
                 ?>
                 <tr class="cent">
@@ -38,6 +42,13 @@
                 <?php
                 }
                 ?>
+                <tr class="cent">
+                    <td colspan="3">
+                    <?php
+                    pages($now,$pages,"?on=$on&p");
+                    ?>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table style="margin-top:40px; width:70%;">

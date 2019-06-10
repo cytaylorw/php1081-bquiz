@@ -20,7 +20,7 @@
                 foreach($rows as $r){
                 ?>
                 <tr class="cent">
-                    <td><input type="text" name="<?=$r['id'];?>[<?=$col1[4][1];?>]" value="<?=$r[$col1[3][1]];?>"
+                    <td><input type="text" name="<?=$r['id'];?>[<?=$col1[4][1];?>]" value="<?=$r[$col1[4][1]];?>"
                             class="w90p"></td>
                     <td><input type="text" name="<?=$r['id'];?>[<?=$col1[3][1];?>]" value="<?=$r[$col1[3][1]];?>"
                             class="w90p"></td>

@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+if(empty($_SESSION['sum'])){
+    $sum=find("total")[0];
+    $sum['text']++;
+    save("total",$sum);
+    $_SESSION['sum']=$sum;
+}
+
 function pdo(){
     $dsn = "mysql:host=localhost;charset=utf8;dbname=db191";
     return new PDO($dsn,"root","");
@@ -9,6 +16,10 @@ function pdo(){
 function qa($sql){
     // echo $sql;
     return pdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function limit($table,$start,$div){
+    return qa("SELECT * FROM $table LIMIT $start,$div");
 }
 
 function find($table,$col=null){
@@ -59,6 +70,24 @@ function ckFile(){
         return $file;
     }else{
         return false;
+    }
+}
+
+function pages($now,$pages,$href){
+    if($now>1){
+        $p=$now-1;
+        echo "<a href='$href=$p'> < </a>";
+    }
+    for ($i=1; $i<=$pages; $i++) {
+        if($now==$i){
+            echo "<span style='font-size:24px;'>$i</span>";
+        }else{
+            echo "<a href='$href=$i'> $i </a>";                      # code...
+        }
+    }
+    if($now<$pages){
+        $n=$now+1;
+        echo "<a href='$href=$n'> > </a>";
     }
 }
 ?>

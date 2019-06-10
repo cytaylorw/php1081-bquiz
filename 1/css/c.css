@@ -17,3 +17,33 @@ input[type=text].w90p, input[type=password].w90p{
 .ma {
     margin:auto;
 }
+
+a{
+    text-decoration: none;
+}
+
+.mw{
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    top: 20px;
+    left: 100px;
+}
+
+.menuw:hover .mw
+{
+	display: block;
+}
+
+.btn{
+    margin: 5px;
+}
+
+.img img{
+    width: 150px;
+    height: 103px;
+    margin: 1px;
+    border: 2px solid orange;
+
+}
