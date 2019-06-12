@@ -38,8 +38,7 @@
                 $.post("api.php?on=<?=$on;?>&do=add", {
                         pid: "<?=$_GET['id'];?>"
                 }, function () {
-                        cl('#cover')
-                        op('#cover', '#cvr', `view.php?do=edit&on=menu&id=<?=$_GET['id'];?>`)
+                        op('#cover', '#cvr', `view.php?do=edit&on=menu&id=<?=$_GET['id'];?>`);
                 })
         }
 </script>

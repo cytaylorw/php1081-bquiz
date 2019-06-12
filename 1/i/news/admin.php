@@ -20,7 +20,7 @@
                 $pages=ceil(rc($on)/$div);
                 $now=(!empty($_GET['p']))?$_GET['p']:1;
                 $start=($now-1)*$div;
-                $rows=limit($on,$start,$div);
+                $rows=limit($start,$div,$on);
                 foreach($rows as $r){
                 ?>
                 <tr class="cent">
@@ -42,7 +42,7 @@
                 <?php
                 }
                 ?>
-                <tr class="cent">
+                <tr class="cent pages">
                     <td colspan="3">
                     <?php
                     pages($now,$pages,"?on=$on&p");

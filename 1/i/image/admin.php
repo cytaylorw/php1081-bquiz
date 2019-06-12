@@ -20,13 +20,14 @@
                 $pages=ceil(rc($on)/$div);
                 $now=(!empty($_GET['p']))?$_GET['p']:1;
                 $start=($now-1)*$div;
-                $rows=limit($on,$start,$div);
+                $rows=limit($start,$div,$on);
                 foreach($rows as $r){
                 ?>
                 <tr class="cent">
                     <td><img src="./img/<?=$r[$col1[2][1]];?>" style="width:100px;height:68px;"></td>
+                    <input type="hidden" name="<?=$r['id'];?>[<?=$col1[1][1];?>]">
                     <td><input type="checkbox" name="<?=$r['id'];?>[<?=$col1[1][1];?>]" value="<?=$r['id'];?>"
-                            <?=($r['sh'])?"checked":"";?>></td>
+                            <?=($r[$col1[1][1]])?"checked":"";?>></td>
                     <td><input type="checkbox" name="<?=$r['id'];?>[<?=$col1[0][1];?>]"></td>
                     <?php
                     if(!empty($update)){
@@ -41,7 +42,7 @@
                 <?php
                 }
                 ?>
-                <tr class="cent">
+                <tr class="cent pages">
                     <td colspan="4">
                     <?php
                     pages($now,$pages,"?on=$on&p");

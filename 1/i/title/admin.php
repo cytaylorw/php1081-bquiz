@@ -1,8 +1,13 @@
 
-
+<!-- 
+    &#39;改成單引號
+    先將顯示字串全部改成變數 (新增和更多用邏輯判斷)
+    $api在admin.php
+    最後在修改表格內容
+ -->
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli"><?=$title1;?></p>
-    <form method="post" action="<?=$api;?>">
+    <form method="post" action="<?=$api;?>"> 
         <table width="100%">
             <tbody>
                 <tr class="yel">

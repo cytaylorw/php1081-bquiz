@@ -22,8 +22,9 @@
                 <tr class="cent">
                     <td><input type="text" name="<?=$r['id'];?>[<?=$col1[2][1];?>]" value="<?=$r['text'];?>"
                             class="w90p"></td>
+                    <input type="hidden" name="<?=$r['id'];?>[<?=$col1[1][1];?>]">
                     <td><input type="checkbox" name="<?=$r['id'];?>[<?=$col1[1][1];?>]" value="<?=$r['id'];?>"
-                            <?=($r['sh'])?"checked":"";?>></td>
+                            <?=($r[$col1[1][1]])?"checked":"";?>></td>
                     <td><input type="checkbox" name="<?=$r['id'];?>[<?=$col1[0][1];?>]"></td>
                     <?php
                     if(!empty($update)){

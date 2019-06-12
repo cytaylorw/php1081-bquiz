@@ -25,6 +25,7 @@
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 	<?php
+	/* 標題圖片 */
 	$title=find("title",["sh"=>1])[0];
 	?>
 		<a title="<?=$title['text']?>" href="index.php">
@@ -35,6 +36,7 @@
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
+					<!-- 修改連結 -->
 					<span class="t botli">後台管理選單</span>
 					<a style="color:#000; font-size:13px; text-decoration:none;" href="?on=title">
 						<div class="mainmu">
@@ -76,6 +78,9 @@
 
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
+					<!-- 
+						進站總人數
+					 -->
 					<span class="t">進站總人數 :<?=find("total")[0]['text'];?> </span>
 				</div>
 			</div>
@@ -88,15 +93,21 @@
 							<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;"
 								class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
 							</td>
+							<!-- 修改登出連結 -->
 							<td><button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;index.php?do=login&#39;)"
 									style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
 						</tr>
 					</tbody>
 				</table>
 				<?php
+				/* 
+					根據GET值載入對應功能的檔案。
+					- 先完成title，再直接複製整個資料夾。
+					- 完整註解也在title資料夾內，其他功能只放複製後需要變動的部分。
+				*/
 				$on=(empty($_GET['on']))?"title":$_GET['on'];
 				$api = "api.php?on=$on&do=edit";
-				include "./i/$on/var.php";
+				include "./i/$on/var.php"; // 變數檔
 				include "./i/$on/admin.php";
 				?>
 			</div>
@@ -122,6 +133,7 @@
 		<div style="clear:both;"></div>
 		<div
 			style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
+			<!-- 頁尾版權 -->
 			<span class="t" style="line-height:123px;"><?=find("bottom")[0]['text'];?></span>
 		</div>
 	</div>

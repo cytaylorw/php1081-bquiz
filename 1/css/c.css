@@ -47,3 +47,9 @@ a{
     border: 2px solid orange;
 
 }
+
+.pages *{
+    color:#0CF;
+	cursor:pointer;
+	text-decoration:none;
+}

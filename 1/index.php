@@ -25,6 +25,7 @@
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 	<?php
+	/* 標題圖片 */
 	$title=find("title",["sh"=>1])[0];
 	?>
 		<a title="<?=$title['text']?>" href="?">
@@ -37,7 +38,9 @@
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
 					<?php
+					/* 首頁選單 */
 					$main=find("menu",["sh"=>1]);
+					// 主選單，複製admin.php的一個選單
 					foreach($main as $m){
 
 						?>
@@ -47,6 +50,7 @@
 							<?=$m['file'];?> 
 							</a>
 						<?php
+							// 次選單，放在主選單a標籤之後，mw使用position: absolute定位。
 							$sub=find("menu",["pid"=>$m['id']]);
 							if(count($sub)>0){
 								echo "<div class='mw'>";
@@ -59,16 +63,19 @@
 							</div>
 						<?php
 								}
+								// .mw 結尾標籤
 								echo "</div>";
 							}
 						?>
-						</div>
+						</div></div>
 					<?php
-					echo "</div>";
 					}
 					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
+					<!-- 
+						進站總人數
+					 -->
 					<span class="t">進站總人數 :<?=find("total")[0]['text'];?> </span>
 				</div>
 			</div>
@@ -76,6 +83,7 @@
 				style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
 				<marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
 					<?php
+					/* 廣告區 */
 						$str="";
 						foreach(find("ad",["sh"=>1]) as $m){
 							$str.=$m["text"].str_repeat("&nbsp;",6);
@@ -109,15 +117,19 @@
 			</script>
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
+				<!-- 修改登入連結 -->
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
 					onclick="lo('index.php?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<!-- 
+						校園映象區，配合版型提供的javascript -->
 					<div class="btn cent" onclick="pp(1)"><img src="./icon/up.jpg"></div>
 					<?php
 					$img=find("image",["sh"=>1]);
+					// 直接列出所有需要顯示的圖片，剩下的javascript會處理。
 					foreach($img as $key =>$i){
-						echo "<div class='img cent im' id='ssaa$key'>";
+						echo "<div class='img cent im' id='ssaa$key'>"; // id
 						echo "<img src='./img/".$i['file']."'>";
 						echo "</div>";
 					}
@@ -125,14 +137,14 @@
 					<div class="btn cent" onclick="pp(2)"><img src="./icon/dn.jpg"></div>
 					<script>
 						var nowpage = 0,
-							num = <?=count($img);?>;
+							num = <?=count($img);?>; // 總數
 
 						function pp(x) {
 							var s, t;
-							if (x == 1 && nowpage > 0) {
+							if (x == 1 && nowpage > 0) { 
 								nowpage--;
 							}
-							if (x == 2 && nowpage < num - 3) {
+							if (x == 2 && nowpage < num - 3) { // 原版有bug
 								nowpage++;
 							}
 							$(".im").hide()
@@ -149,6 +161,7 @@
 		<div style="clear:both;"></div>
 		<div
 			style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
+			<!-- 頁尾版權 -->
 			<span class="t" style="line-height:123px;"><?=find("bottom")[0]['text'];?></span>
 		</div>
 	</div>

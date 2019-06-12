@@ -1,14 +1,20 @@
 <!--正中央-->
+<!-- 
+    更多最新消息區
+    - 直接從最新消息區連標題複製過來修改。
+    - 直接使用#altt的script，#alt的有比較多問題。
+ -->
 <span class="t botli">更多最新消息區
     <?php
 		$div=5;
 		$pages=ceil(rc("news")/$div);
 		$now=(!empty($_GET['p']))?$_GET['p']:1;		
 		$start=($now-1)*$div;
-		$rows=limit("news",$start,$div);
+		$rows=limit($start,$div,"news",["sh"=>1]);
                 
     ?>
     </span>
+    <!-- order list的起始數字 -->
     <ol start="<?=$start+1;?>" class="ssaa" style="list-style-type:decimal;">
     <?php
         
@@ -40,7 +46,8 @@
             }
         )
     </script>
-<div style="text-align:center;">
+<!-- 分頁 -->
+<div class="pages" style="text-align:center;"> <!-- class用來修改版型 -->
 	<?php
 	pages($now,$pages,"?do=news&p");
 	?>
