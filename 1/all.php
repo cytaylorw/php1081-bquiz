@@ -39,6 +39,13 @@ function find($table,$col=null){
 }
 
 /* 
+    查詢資料表資料，回傳一筆資料。
+*/
+function find1($table,$col=null,$index=0){
+    return find($table,$col)[$index];
+}
+
+/* 
     切割回傳資料，分頁使用。
 */
 function limit($start,$div,$table,$col=null){
