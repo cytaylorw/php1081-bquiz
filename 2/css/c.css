@@ -1,0 +1,23 @@
+.tab{
+    list-style-type: none;
+    padding:0;
+}
+
+.tab li{
+    display: block;
+    float:left;
+    background-color: #ccc;
+    padding:5px 10px;
+    border: 1px solid gray;
+}
+
+.content{
+    border: 1px solid gray;
+    clear:both;
+    display:none;
+}
+
+.type{
+    list-style-type: none;
+    padding:0;
+}

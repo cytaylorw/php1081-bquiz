@@ -1,4 +1,5 @@
 <?php
+$db = "db192";
 include_once "all.php";
 
 /* 
