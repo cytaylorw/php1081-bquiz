@@ -58,5 +58,11 @@ switch($do){
         }
         gt("admin.php?do=news");
         break;
+    case "addQue":
+        foreach($_POST["opt"] as $opt){
+            save("que",["title"=>$_POST["title"],"opt"=>$opt,"vote"=>0]);
+        }
+        gt("admin.php?do=que");
+        break;
 }
 ?>
