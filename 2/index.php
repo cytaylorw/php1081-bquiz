@@ -46,10 +46,10 @@
 						}else{
 							echo "歡迎，".$_SESSION['login'];
 							if($_SESSION['login']=="admin"){
-								echo "<button>管理</button>|";
+								echo "<button onclick=location.href='admin.php'>管理</button>";
 							}
 							?>
-							<button>登出</button>
+							<button onclick="location.href='logout.php'">登出</button>
 							<?php							
 						}
 					?>

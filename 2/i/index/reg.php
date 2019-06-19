@@ -37,13 +37,14 @@
         let email = $("#email").val();
         if(!acc || !pw || !pw2 || !email){
             alert("不可空白");
+        }else{
+            $.post("api.php?do=reg",{acc,pw,email},function(res){
+                if(res*1){
+                    alert("註冊完成，歡迎加入。");
+                }else{
+                    alert("帳號重複");
+                }
+            })
         }
-        $.post("api.php?do=reg",{acc,pw,email},function(res){
-            if(res*1){
-                alert("註冊完成，歡迎加入。");
-            }else{
-                alert("帳號重複");
-            }
-        })
     }
 </script>

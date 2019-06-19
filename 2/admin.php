@@ -49,7 +49,7 @@
 								echo "<br><button>管理</button>|";
 							}
 							?>
-							<button>登出</button>
+							<button onclick="location.href='logout.php'">登出</button>
 							<?php							
 						}
 					?>

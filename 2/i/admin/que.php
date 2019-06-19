@@ -1,20 +1,15 @@
 <fieldset>
-    <legend>問卷管理</legend>
+    <legend>新增問卷</legend>
     <form action="api.php?do=addQue" method="post">
         <table>
             <tr>
-                <td style="background-color:#ddd">問卷名稱</td>
-                <td><input type="text" name="title" id=""></td>
+                <td class="clo">問卷名稱</td>
+                <td><input type="text" name="title"></td>
             </tr>
             <tr>
-                <td colspan="2" style="padding:0;">
-                <table style="width:100%;margin:0;background-color:#ddd">
-                    <tr>
-                        <td id="newOp">
-                        </td>
-                        <td style="vertical-align:bottom;"><input type="button" value="更多" onclick="more()"></td>
-                    </tr>
-                </table>
+                <td colspan="2" id="newOp" class="clo">
+                    選項 <input type="text" name="opt[]" id="">
+                    <input type="button" value="更多" onclick="more()">
                 </td>
 
             </tr>
@@ -26,8 +21,7 @@
     </fieldset>
 
     <script>
-        more();
         function more(){
-            $("#newOp").append(`<div class="newOp">選項 <input type="text" name="opt[]" id=""></div>`)
+            $("#newOp").prepend(`選項 <input type="text" name="opt[]" id=""><br>`)
         }
     </script>

@@ -44,7 +44,7 @@ switch($do){
                 del("user",$id);
             }
         }
-        gt("admin.php?do=user");
+        gt("admin.php","do=user");
         break;
     case 'editNews':
         foreach($_POST as $id => $col){
@@ -62,7 +62,28 @@ switch($do){
         foreach($_POST["opt"] as $opt){
             save("que",["title"=>$_POST["title"],"opt"=>$opt,"vote"=>0]);
         }
-        gt("admin.php?do=que");
+        gt("admin.php","do=que");
+        break;
+    case "queVote":
+        $opt=find("que",$_POST["vote"])[0];
+        $opt["vote"]++;
+        save("que",$opt);
+        $sum=qa("SELECT title, SUM(vote) as total FROM que WHERE title='".$opt["title"]."' GROUP BY title")[0]["total"];
+        // echo "SELECT title, SUM(vote) as total FROM que WHERE title='".$opt["title"]."' GROUP BY title";
+        gt("index.php","do=queResult&sum=$sum&title=".$opt["title"]);
+        break;
+    case "good":
+        if($_POST["type"]==1){
+            save("log",["nid"=>$_POST["id"],"user"=>$_POST["user"]]);
+            $news=find("news",$_POST["id"])[0];
+            $news['good']++;
+            save("news",$news);
+        }else{
+            del("log",find("log",["nid"=>$_POST["id"],"user"=>$_POST["user"]])[0]["id"]);
+            $news=find("news",$_POST["id"])[0];
+            $news['good']--;
+            save("news",$news);
+        }
         break;
 }
 ?>

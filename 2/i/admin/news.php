@@ -12,17 +12,13 @@
                 $news=find("news");
                 $div=3;
                 $num=count($news);
-                if($num>$div){
-                    $pages=ceil($num/$div);
-                    $now=(empty($_GET["p"]))?1:$_GET["p"];
-                    $list=array_slice($news,($now-1)*$div,$div);
-                }else{
-                    $list=$news;
-                }
+                $pages=ceil($num/$div);
+                $now=(empty($_GET["p"]))?1:$_GET["p"];
+                $list=array_slice($news,($now-1)*$div,$div);
                 foreach($list as $k => $l){
             ?>
             <tr>
-                <td class="clo"><?=$k+1;?>.</td>
+                <td class="clo"><?=$k+1+($now-1)*$div;?>.</td>
                 <td><?=$l["title"];?></td>
                 <td>
                     <input type="hidden" name="<?=$l["id"];?>[sh]" value="">
