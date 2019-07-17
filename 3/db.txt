@@ -1,0 +1,10 @@
+
+INSERT INTO poster(name,file,rank) VALUES("預告片1","03A01.jpg","1");
+INSERT INTO poster(name,file,rank) VALUES("預告片2","03A02.jpg","2");
+INSERT INTO poster(name,file,rank) VALUES("預告片3","03A03.jpg","3");
+INSERT INTO poster(name,file,rank) VALUES("預告片4","03A04.jpg","4");
+INSERT INTO poster(name,file,rank) VALUES("預告片5","03A05.jpg","5");
+INSERT INTO poster(name,file,rank) VALUES("預告片6","03A06.jpg","6");
+INSERT INTO poster(name,file,rank) VALUES("預告片7","03A07.jpg","7");
+INSERT INTO poster(name,file,rank) VALUES("預告片8","03A08.jpg","8");
+INSERT INTO poster(name,file,rank) VALUES("預告片9","03A09.jpg","9");

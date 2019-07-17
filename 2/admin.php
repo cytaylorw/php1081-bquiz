@@ -1,4 +1,5 @@
 ﻿<?php include_once "base.php";?>
+
 <!DOCTYPE html
 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -21,12 +22,10 @@
 	<iframe name="back" style="display:none;"></iframe>
 	<div id="all">
 		<div id="title">
-			<?=date("m月d日 l")?> | 今日瀏覽: <?=$_SESSION["total"];?> | 累積瀏覽:
-			<?=qa("SELECT sum(total) as t FROM total")[0]["t"];?> <a href="index.php" style="float:right">回首頁</a></div>
+			<?=date("m月d日 l")?> | 今日瀏覽: <?=find("view", ["date" => date("Y-m-d")])[0]["view"];?> | 累積瀏覽:
+			<?=qa("SELECT SUM(view) as t FROM view")[0]["t"];?> <a href="index.php" style="float:right">回首頁</a></div>
 		<div id="title2">
-			<a href="index.php">
-				<img src="./icon/02B01.jpg" title="健康促進網 - 回首頁">
-			</a>
+			<img src="./icon/02B01.jpg" title="健康促進網 - 回首頁">
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
@@ -38,29 +37,27 @@
 			</div>
 			<div class="hal" id="main">
 				<div>
-					<marquee style="width:80%; display:inline-block;">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
+					<marquee style="width:80%;">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章。</marquee>
 					<span style="width:18%; display:inline-block;">
-					<?php
-						if(empty($_SESSION['login'])){
-							echo "<a href='?do=login'>會員登入</a>";
-						}else{
-							echo "歡迎，".$_SESSION['login'];
-							if($_SESSION['login']=="admin"){
-								echo "<br><button>管理</button>|";
+						<?php 
+							if(empty($_SESSION["login"])){
+								echo "<a href='?do=login'>會員登入</a>";
+							}else{
+								echo "歡迎，".$_SESSION["login"];
+								if($_SESSION["login"]=="admin")echo "<button onclick=location.href='admin.php'>管理</button>";
+								echo "<button onclick=location.href='logout.php'>登出</button>";
 							}
-							?>
-							<button onclick="location.href='logout.php'">登出</button>
-							<?php							
-						}
-					?>
+						?>
+						
 					</span>
 					<div class="">
-					<?php
-							$do=(!empty($_GET["do"]))?$_GET["do"]:"";
-							if(!in_array($do,["user","news","que"])){
-								echo "<h1>請選擇管理項目</h1>";
-							}else{
+						<?php
+							$do=(empty($_GET["do"]))?"":$_GET["do"];
+							if($do){
+
 								include "./i/admin/$do.php";
+							}else{
+								echo "<h1 class='ct'>請選擇管理項目</h1>";
 							}
 						?>
 					</div>

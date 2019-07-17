@@ -1,7 +1,7 @@
 <fieldset>
-    <legend>帳號管理</legend>
+    <legend>最新文章管理</legend>
     <form action="api.php?do=editNews" method="post">
-        <table style="width:80%;margin:auto;" class="ct">
+        <table style="margin:auto;width:80%;text-align:center">
             <tr>
                 <td>編號</td>
                 <td>標題</td>
@@ -9,35 +9,35 @@
                 <td>刪除</td>
             </tr>
             <?php
-                $news=find("news");
-                $div=3;
-                $num=count($news);
-                $pages=ceil($num/$div);
-                $now=(empty($_GET["p"]))?1:$_GET["p"];
-                $list=array_slice($news,($now-1)*$div,$div);
-                foreach($list as $k => $l){
+            $now=(empty($_GET["p"]))?"1":$_GET["p"];
+            $div=3;
+            $news=find("news");
+            $num=count($news);
+            $pages=ceil($num/$div);
+            $start=($now-1)*$div;
+            $slice=array_slice($news,$start,$div);
+            
+            foreach($slice as $k => $u){
             ?>
             <tr>
-                <td class="clo"><?=$k+1+($now-1)*$div;?>.</td>
-                <td><?=$l["title"];?></td>
-                <td>
-                    <input type="hidden" name="<?=$l["id"];?>[sh]" value="">
-                    <input type="checkbox" name="<?=$l["id"];?>[sh]" value="checked" <?=$l["sh"];?>></td>
-                <td><input type="checkbox" name="<?=$l["id"];?>[del]"></td>
+                <td><?=$k+$start+1?>.</td>
+                <td><?=$u["title"]?></td>
+                <td><input type="hidden" name="<?=$u["id"]?>[sh]" value="">
+                    <input type="checkbox" name="<?=$u["id"]?>[sh]" value="checked" <?=$u["sh"]?>></td>
+                <td><input type="checkbox" name="<?=$u["id"]?>[del]" ></td>
             </tr>
             <?php
-                }
-                ?>
+            }
+            ?>
             <tr>
-                <td colspan="4">
-                <?php
-                    if($num>$div)pages($now,$pages,"admin.php?do=news&p")
-                ?>
-                </td>
+                <td colspan="4"><?=pages($now,$pages,"?do=news&p");?></td>
             </tr>
             <tr>
                 <td colspan="4"><input type="submit" value="確定修改"></td>
             </tr>
         </table>
     </form>
+
+    </form>
 </fieldset>
+

@@ -1,26 +1,22 @@
-<?php
-    if(empty($_GET["title"])){
-        gt("index.php?do=que");
-    }else{
-        $opt=find("que",["title"=>$_GET["title"]]);
+<style>
+    .queList{
+        list-style-type: none;
     }
-?>
+</style>
 
-<fieldset style="width:60%;margin:auto;">
-    <legend>目前位置：首頁 > 問卷調查 > <?=$_GET["title"];?></legend>
-    <form action="api.php?do=queVote" method="post">
-         <h3><?=$_GET["title"];?></h3>
-         <ul style="list-style-type:none;padding:0;">
+<fieldset>
+    <legend>目前位置：首頁 > 問卷調查 > <?=$_GET["subj"];?></legend>
+        <form action="api.php?do=queVote" method="post">
+            <h4><?=$_GET["subj"];?></h4>
+            <ul class="queList">
             <?php
-                foreach($opt as $k => $o){
+                $opt = find("que",["subj"=>$_GET["subj"]]);
+                foreach($opt as $o){
             ?>
-                <li><input type="radio" name="vote" value="<?=$o["id"];?>"><?=$o["opt"];?></li>
-            <?php
-                }
-                ?>
-        </ul>
-        <input type="submit" value="我要投票">
-    </form>
+                <li><input type="radio" name="vote" value="<?=$o['id'];?>"><?=$o['opt'];?></li>
+                <?php } ?>
+            </ul>
+            <input type="submit" value="我要投票">
+        </form>
     
-    
-    </fieldset>
+</fieldset>

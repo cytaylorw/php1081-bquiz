@@ -1,4 +1,4 @@
-<fieldset style="width:50%;padding:20px;margin:auto;">
+<fieldset>
     <legend>忘記密碼</legend>
     <form>
         <table>
@@ -6,25 +6,27 @@
                 <td>請輸入信箱以查詢密碼</td>
             </tr>
             <tr>
-                <td><input type="text" name="email" id="email" style="width:300px;"></td>
+                <td><input type="text" name="email" id="email"></td>
             </tr>
             <tr>
                 <td id="result"></td>
             </tr>
             <tr>
-                <td><input type="button" value="尋找" onclick="forget()"></td>
+                <td><input type="button" value="尋找" id="sub"></td>
             </tr>
         </table>
     </form>
 </fieldset>
 
 <script>
-    function forget(){
-        let email = $("#email").val();
-        $.post("api.php?do=forget",{email},function(res){
-            $("#result").text(res);
-        })
-    }
+    $(function(){
+        $("#sub").on("click",function(){
+            let email=$("#email").val();
+            $.post("api.php?do=forget",{email},function(r){
+                $("#result").text(r)
+            })
 
+        })
+    })
 
 </script>

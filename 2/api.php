@@ -1,89 +1,94 @@
-<?php 
+<?php
 include_once "base.php";
-$do=(!empty($_GET["do"]))?$_GET["do"]:"";
+
+$do=(empty($_GET["do"]))?"":$_GET["do"];
 
 switch($do){
     case "reg":
-        if(rc("user",["acc"=>$_POST["acc"]])){
+        $user=find("user",["acc"=>$_POST["acc"]]);
+        if($user){
             echo 0;
         }else{
             save("user",$_POST);
             echo 1;
         }
         break;
-    case "login":
-        if(rc("user",["acc"=>$_POST["acc"]])){
-            if(rc("user",["acc"=>$_POST["acc"],"pw"=>$_POST["pw"]])){
-                $_SESSION["login"]=$_POST["acc"];
-                if($_POST["acc"]=="admin"){
-                    echo 1;
-                }else{
-                    echo 2;
-                }
-            }else{
-                echo 3;
-            }
-        }else{
-            echo 4;
-        }
-        break;
+
     case "forget":
-        $user = find("user",$_POST);
+        $user=find("user",$_POST);
         if($user){
-            echo "您的密碼為：".$user[0]["pw"];
+            echo "您的密碼為:".$user[0]["pw"];
         }else{
-            echo "查無此資料";
+            echo "查無資料";
+        }
+
+    case "login":
+        $user=find("user",["acc"=>$_POST["acc"]]);
+        if($user){
+            $user=find("user",$_POST);
+            if($user){
+                $_SESSION["login"]=$user[0]["acc"];
+                echo 1;
+            }else{
+                echo 2;
+            }
+        }else{
+            echo 3;
         }
         break;
-    case "getPo":
-        echo json_encode(find("news",$_POST));
-        break;
+
     case "delUser":
-        if(!empty($_POST["del"])){
-            foreach($_POST["del"] as $id){
-                del("user",$id);
-            }
+        foreach($_POST["del"] as $id){
+            del("user",$id);
         }
         gt("admin.php","do=user");
         break;
-    case 'editNews':
+
+    case "editNews":
         foreach($_POST as $id => $col){
-            if(!empty($col["del"])){
-                del("news",$id);
-            }else{
+            if(empty($col["del"])){
                 $col["id"]=$id;
-                print_r($col);
                 save("news",$col);
+            }else{
+                del("news",$id);
             }
         }
-        gt("admin.php?do=news");
+        gt("admin.php","do=news");
         break;
     case "addQue":
-        foreach($_POST["opt"] as $opt){
-            save("que",["title"=>$_POST["title"],"opt"=>$opt,"vote"=>0]);
+        foreach($_POST["opt"] as $o){
+            $col["subj"]=$_POST["subj"];
+            $col["opt"]=$o;
+            save("que",$col);
         }
         gt("admin.php","do=que");
         break;
-    case "queVote":
-        $opt=find("que",$_POST["vote"])[0];
-        $opt["vote"]++;
-        save("que",$opt);
-        $sum=qa("SELECT title, SUM(vote) as total FROM que WHERE title='".$opt["title"]."' GROUP BY title")[0]["total"];
-        // echo "SELECT title, SUM(vote) as total FROM que WHERE title='".$opt["title"]."' GROUP BY title";
-        gt("index.php","do=queResult&sum=$sum&title=".$opt["title"]);
+
+    case "po":
+        echo json_encode(find("news",$_POST));
         break;
+
     case "good":
         if($_POST["type"]==1){
-            save("log",["nid"=>$_POST["id"],"user"=>$_POST["user"]]);
             $news=find("news",$_POST["id"])[0];
-            $news['good']++;
+            $news["good"]++;
             save("news",$news);
+            save("nlog",["nid"=>$_POST["id"],"acc"=>$_POST["acc"]]);
         }else{
-            del("log",find("log",["nid"=>$_POST["id"],"user"=>$_POST["user"]])[0]["id"]);
             $news=find("news",$_POST["id"])[0];
-            $news['good']--;
+            $news["good"]--;
             save("news",$news);
+            del("nlog",find("nlog",["nid"=>$_POST["id"],"acc"=>$_POST["acc"]])[0]['id']);
         }
         break;
+
+    case "queVote":
+        $opt = find("que",$_POST["vote"])[0];
+        $opt["vote"]++;
+        save("que",$opt);
+        gt("index.php","do=que");
+        break;
 }
+
+
 ?>

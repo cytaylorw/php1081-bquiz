@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import "c.css";
 /* CSS Document */
 body
 {
@@ -85,7 +84,7 @@ a:hover
 #bottom
 {
 	text-align:right;
-	padding:0;
+	/* padding:24px; */
 }
 a.button
 {

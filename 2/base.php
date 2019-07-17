@@ -1,20 +1,17 @@
 <?php
-$db = "db192";
+include_once "all.php";
 
-include "all.php";
+$db="db192";
 
-if(empty($_SESSION["total"])){
-    $today=find("total",["date"=>date("Y-m-d")]);
-    if($today){
-        $total=++$today[0]["total"];
-        save("total",$today[0]);
+if(empty($_SESSION["view"])){
+    $total =  find("view",["date"=>date("Y-m-d")]);
+    if($total){
+        $view=++$total[0]["view"];
+        save("view",$total[0]);
     }else{
-        $total=1;
-        save("total",["date"=>date("Y-m-d"),"total"=>$total]);
-        
+        $view=1;
+        save("view",["date"=>date("Y-m-d"),"view"=>$view]);
     }
-    $_SESSION["total"] = $total;
+    
+    $_SESSION["view"]=$view;
 }
-
-
-?>
