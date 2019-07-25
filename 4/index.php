@@ -26,14 +26,14 @@ include_once "base.php";
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |
                 <a href="?do=buycart">購物車</a> |
-                <?php
-                    echo (empty($_SESSION["mem"]))?"<a href='?do=login'>會員登入</a>":"<a href='?do=logout'>登出</a>";
-                ?>
+<?php
+    echo (empty($_SESSION["mem"])) ? "<a href='?do=login'>會員登入</a>" : "<a href='?do=logout'>登出</a>";
+?>
                 |
-                <?php
-                    echo (empty($_SESSION["admin"]))?"<a href='?do=admin'>管理登入</a>":"<a href='backend.php'>返回管理</a>";
-                ?>
-                
+<?php
+    echo (empty($_SESSION["admin"])) ? "<a href='?do=admin'>管理登入</a>" : "<a href='backend.php'>返回管理</a>";
+?>
+
             </div>
             <marquee behavior="" direction="">
                 情人節特惠活動 &nbsp;&nbsp;&nbsp;&nbsp; 年終特賣會開跑了
@@ -41,6 +41,28 @@ include_once "base.php";
         </div>
         <div id="left" class="ct">
             <div style="min-height:400px;">
+                <div class='ww'><a href="?">全部商品(<?=rc("item", ["sh" => 1])?>)</a></div>
+<?php
+    $mtypes = find("type", ["pid" => 0]);
+    foreach ($mtypes as $mt) {
+?>
+                    <div class='ww'><a href="?pid=<?=$mt['id'];?>"><?=$mt["name"];?>(<?=rc("item", ["sh" => 1, "pid" => $mt["id"]])?>)</a>
+<?php
+    $stypes = find("type", ["pid" => $mt["id"]]);
+    foreach ($stypes as $st) {
+?>
+                        <div class='s'>
+                            <a href="?sid=<?=$st['id'];?>" style="background:yellow;">
+                                <?=$st["name"];?>(<?=rc("item", ["sh" => 1, "pid" => $mt["id"], "sid" => $st["id"]]);?>)
+                            </a>
+                        </div>
+<?php
+}
+?>
+                    </div>
+<?php
+}
+?>
             </div>
             <span>
                 <div>進站總人數</div>
@@ -49,10 +71,10 @@ include_once "base.php";
             </span>
         </div>
         <div id="right">
-        <?php
-            $do=(empty($_GET["do"]))?"home":$_GET["do"];
-            include_once "./i/index/$do.php"
-        ?>
+<?php
+    $do = (empty($_GET["do"])) ? "home" : $_GET["do"];
+    include_once "./i/index/$do.php"
+?>
         </div>
         <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
         <?=find1("bot")["bot"];?></div>
