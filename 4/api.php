@@ -51,6 +51,14 @@ switch($do){
     case "find":
         $all = find($_GET["tb"],$_POST);
         echo json_encode($all);
+        break;
+    case "checkout":
+        $_POST['items']=serialize($_SESSION['cart']);
+        $_POST['no']=date("Ymd").sprintf("%06d",qa("SELECT MAX(id) as m FROM ord")[0]['m']+1);
+        save("ord",$_POST);
+        unset($_SESSION['cart']);
+        gt("index.php");
+        break;
 }
 
 ?>

@@ -17,7 +17,7 @@
         <td>
             <ul style="list-style-type:none;padding:0;margin:0">
                 <li class="tt ct"><?=$it["name"];?></li>
-                <li>價錢：<?=$it["price"];?><a href="?do=buycart&id=<?=$it["id"];?>"><img src="./icon/0402.jpg" style="float:right"></a></li>
+                <li>價錢：<?=$it["price"];?><a href="?do=buycart&id=<?=$it["id"];?>&qt=1"><img src="./icon/0402.jpg" style="float:right"></a></li>
                 <li>規格：<?=$it["spec"];?></li>
                 <li>簡介：<?=nl2br($it["intro"]);?></li>
             </ul>

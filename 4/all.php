@@ -36,7 +36,7 @@ function find($table,$col=null,$cond=""){
             $sql.=" WHERE id='$col'";
         }
     }
-    return qa($sql,$cond);
+    return qa($sql.$cond);
 }
 
 /* 
