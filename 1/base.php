@@ -1,13 +1,12 @@
 <?php
 session_start();
-/* 第一題
 if(empty($_SESSION['total'])){
     $total=find1("total");
     $_SESSION['total']=$total['name']++;
     save("total",$total);
     
 }
- */
+
 function pdo(){
     return new PDO("mysql:host=localhost;charset=utf8;dbname=db191","root","");
 }
