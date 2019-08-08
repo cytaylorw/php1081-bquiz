@@ -8,7 +8,7 @@ if(empty($_SESSION['total'])){
     
 }
  */
-/* 
+
 if(empty($_SESSION['total'])){
     if(rc('total',['tdate'=> date("Y-m-d")])){
         $day = find1('total',['tdate'=> date("Y-m-d")]);
@@ -19,7 +19,6 @@ if(empty($_SESSION['total'])){
     }
     $_SESSION['total']=date("Y-m-d");
 }
- */
 function pdo(){
     return new PDO("mysql:host=localhost;charset=utf8;dbname=db192","root","");
 }

@@ -33,7 +33,6 @@ switch($_GET['do']){
     case 'rc':
         echo rc($tb,$_POST);
         break;
-/* 第二題
     case 'forget':
         $user = find($tb,$_POST);
         if($user){
@@ -63,8 +62,6 @@ switch($_GET['do']){
         }else{
             del("good",find1("good",$_POST))['id'];
         }
-        break;
-     */    
 }
 
 

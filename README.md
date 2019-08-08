@@ -28,3 +28,8 @@
     - 後台多項顯示採用input:hidden#id[sh][value=0]+input:checkbox#id[sh][value=1]，checkbox沒有被勾選不會有值，被勾選1會蓋掉0
     - 前台選單的js在js.js，其他都在寫在行內
     - 前台校園映像控制判斷有bug
+
+### 第二題
+    - 共用api.php用不太到，加上個功能都不太一樣，所以直接寫會比較快
+    - 按讚部分要熟悉素材提供的js
+    - 問卷前台部分CP值最低，可以最後做
