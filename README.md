@@ -18,7 +18,7 @@
     - base.save記得檢查$col空值
     - api?do=edit的多筆修改記得加$col['id']=$key
     - api?do=save的功能設計與base.save一樣共用insert和update，POST記得加id
-    - api?do=save檔案都放進img資料夾(第三題適用?)
+    - api?do=save檔案都放進img資料夾(第三題?)
 
 ### 第一題
     - 所有資料庫欄位名稱一樣，name放會直接顯示的文字，file放其他資料(檔案、密碼、連結)
@@ -33,3 +33,7 @@
     - 共用api.php用不太到，加上個功能都不太一樣，所以直接寫會比較快
     - 按讚部分要熟悉素材提供的js
     - 問卷前台部分CP值最低，可以最後做
+
+### 第三題
+    - 預告片前台須複習
+    - 訂票前台須複習，尤其場次部分，還有js(Array.includes(),Array.push(),Array.join())

@@ -1,6 +1,6 @@
 <?php
 include_once "base.php";
-$tb=$_GET['tb'];
+if(!empty($_GET['tb']))$tb=$_GET['tb'];
 
 switch($_GET['do']){
     case 'save':
@@ -76,7 +76,36 @@ switch($_GET['do']){
             del("good",find1("good",$_POST))['id'];
         }
         break;
-     */    
+     */ 
+    case 'getTimes':
+        $start;
+        if($_POST['sdate'] == date('Y-m-d') && date('H')>=14){
+            $start = ceil((24-date('H'))/2);
+        }else{
+            $start = 6;
+        }
+        $str="";
+        for($i=$start;$i>=2;$i--){
+            $av=20-qa("SELECT SUM(total) as s FROM ord WHERE name='".$_POST['name']."' && sdate='".$_POST['sdate']."' && stime='".$mt[$i]."'")[0]['s'];
+            $str.="<option value='".$mt[$i]."'>".$mt[$i]."剩餘座位 $av</option>";
+        }
+        echo $str;
+        break;
+    case 'getSeat':
+        $ord = find("ord",$_POST);
+        $seat=[];
+        foreach($ord as $o){
+            $seat=array_merge($seat,unserialize($o['seat']));
+        }
+        echo json_encode($seat);
+        break;
+    case 'order':
+        $_POST['no']=date('Ymd').sprintf("%04d",qa("SELECT MAX(id) as n FROM ord")[0]['n']+1);
+        $_POST['seat']=serialize($_POST['seat']);
+        save("ord",$_POST);
+        echo $_POST['no'];
+        break;
+
 }
 
 

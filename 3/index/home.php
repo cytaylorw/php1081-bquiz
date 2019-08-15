@@ -41,7 +41,7 @@
               $slice=array_slice($mvs,($now-1)*$div,$div);
               foreach($slice as $m){
             ?>
-        <table style="width:48%;display:inline-block;font-size:14px">
+        <table style="width:49%;display:inline-block;font-size:14px">
               <tr>
             <td><img src="<?=$m['po'];?>" style="width:70px"></td>
             <td><ul class="ul-list">

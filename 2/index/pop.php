@@ -22,14 +22,15 @@
                 <pre class="all" style="display:none"><?=$q['text'];?></pre>
             </td>
             <td>
-                <span id="vie<?=$q['id'];?>"><?=$sum;?></span>個人說<img src="./icon/02B03.jpg" style="width:20px;"> - 
+                <span id="vie<?=$q['id'];?>"><?=$sum;?></span>個人說<img src="./icon/02B03.jpg" style="width:20px;">
                 <?php
+                    if(!empty($_SESSION['login'])){
                     $id=find1("user",["acc"=>$_SESSION['login']])['id'];
                     if(rc("good",["nid"=>$q['id'],"uid"=>$id])){
-                        echo "<a id='good".$q['id']."'onclick='good(".$q['id'].",2,$id)'>收回讚</a>";
+                        echo " - <a id='good".$q['id']."'onclick='good(".$q['id'].",2,$id)'>收回讚</a>";
                     }else{
-                        echo "<a id='good".$q['id']."'onclick='good(".$q['id'].",1,$id)'>讚</a>";
-                    }
+                        echo " - <a id='good".$q['id']."'onclick='good(".$q['id'].",1,$id)'>讚</a>";
+                    }}
                 ?>
             </td>
         </tr>

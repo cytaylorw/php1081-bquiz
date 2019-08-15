@@ -1,8 +1,6 @@
 <?php
-    if(!empty($_POST)){
-        if($_POST['acc']=="admin" && $_POST['pw']=="1234"){
+    if(!empty($_POST) && $_POST['acc']=="admin" && $_POST['pw']=="1234"){
             gt("admin.php");
-        }
     }
 
 ?>

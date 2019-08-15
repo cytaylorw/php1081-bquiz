@@ -8,7 +8,7 @@ if(empty($_SESSION['total'])){
     
 }
  */
-/* 
+/* 第二題
 if(empty($_SESSION['total'])){
     if(rc('total',['tdate'=> date("Y-m-d")])){
         $day = find1('total',['tdate'=> date("Y-m-d")]);
@@ -20,8 +20,18 @@ if(empty($_SESSION['total'])){
     $_SESSION['total']=date("Y-m-d");
 }
  */
+/* 第三題
+$opt=["普通級","輔導級","保護級","限制級"];
+$mt=[
+    6 => "14:00~16:00",
+    5 => "16:00~18:00",
+    4 => "18:00~20:00",
+    3 => "20:00~22:00",
+    2 => "22:00~24:00",
+];
+ */
 function pdo(){
-    return new PDO("mysql:host=localhost;charset=utf8;dbname=db192","root","");
+    return new PDO("mysql:host=localhost;charset=utf8;dbname=db193","root","");
 }
 
 function qa($sql){
@@ -74,11 +84,15 @@ function save($table,$col){
 }
 
 function del($table,$col){
-    $sql = "DELETE FROM $table WHERE id";
+    $sql = "DELETE FROM $table ";
     if(is_array($col)){
-        $sql.= " IN (".implode(",",array_values($col)).")";
+        $str=[];
+        foreach($col as $k=>$c){
+            $str[]=sprintf("%s='%s'",$k,$c);
+        }
+        $sql.= "WHERE ".implode(" && ",$str);
     }else{
-        $sql.= "='$col'";
+        $sql.= "WHERE id='$col'";
     }
     return pdo()->exec($sql);
 }

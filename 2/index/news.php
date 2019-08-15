@@ -22,12 +22,13 @@
             </td>
             <td>
                 <?php
+                    if(!empty($_SESSION['login'])){
                     $id=find1("user",["acc"=>$_SESSION['login']])['id'];
                     if(rc("good",["nid"=>$q['id'],"uid"=>$id])){
                         echo "<a id='good".$q['id']."'onclick='good(".$q['id'].",2,$id)'>收回讚</a>";
                     }else{
                         echo "<a id='good".$q['id']."'onclick='good(".$q['id'].",1,$id)'>讚</a>";
-                    }
+                    }}
                 ?>
             </td>
         </tr>
@@ -45,6 +46,6 @@
     })
     $(".all").on("click",function(){
         $(this).hide();
-        $(this).prev().show();
+        $(".intro").show();
     })
 </script>
