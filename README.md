@@ -40,4 +40,4 @@
 
 ### 第四題
     - 增加input[readonly] css，訂單前後台欄位全部用input
-    - 訂單購物車用SESSION，不用AJAX
+    - 訂單購物車使用SESSION，不用AJAX
