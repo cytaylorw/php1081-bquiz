@@ -2,7 +2,7 @@
 session_start();
 /* 第一題
 if(empty($_SESSION['total'])){
-    $total=find1("total");
+    $total=f1("total");
     $_SESSION['total']=$total['name']++;
     save("total",$total);
     
@@ -11,7 +11,7 @@ if(empty($_SESSION['total'])){
 /* 第二題
 if(empty($_SESSION['total'])){
     if(rc('total',['tdate'=> date("Y-m-d")])){
-        $day = find1('total',['tdate'=> date("Y-m-d")]);
+        $day = f1('total',['tdate'=> date("Y-m-d")]);
         $day['total']++;
         save('total',$day);
     }else{
@@ -20,7 +20,7 @@ if(empty($_SESSION['total'])){
     $_SESSION['total']=date("Y-m-d");
 }
  */
-/* 第三題
+/* 第三題 */
 $opt=["普通級","輔導級","保護級","限制級"];
 $mt=[
     6 => "14:00~16:00",
@@ -29,7 +29,7 @@ $mt=[
     3 => "20:00~22:00",
     2 => "22:00~24:00",
 ];
- */
+
 function pdo(){
     return new PDO("mysql:host=localhost;charset=utf8;dbname=db194","root","");
 }
@@ -39,7 +39,7 @@ function qa($sql){
     return pdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function find($table,$col=null,$more=""){
+function f($table,$col=null,$more=""){
     $sql = "SELECT * FROM $table ";
     if(!empty($col)){
         if(is_array($col)){
@@ -55,20 +55,20 @@ function find($table,$col=null,$more=""){
     return qa($sql.$more);
 }
 
-function find1($table,$col=null,$more=""){
-    return find($table,$col,$more)[0];
+function f1($table,$col=null,$more=""){
+    return f($table,$col,$more)[0];
 }
 
 function rc($table,$col=null,$more=""){
-    return count(find($table,$col,$more));
+    return count(f($table,$col,$more));
 }
 
-function limit($idx,$len,$table,$col=null,$more=""){
-    return array_slice(find($table,$col,$more),$idx,$len);
+function lmt($idx,$len,$table,$col=null,$more=""){
+    return array_slice(f($table,$col,$more),$idx,$len);
 }
 
-function maxid($table){
-    return qa("SELECT MAX(id) as m from $table")[0]['m'];
+function mx($table, $col="id"){
+    return qa("SELECT MAX($col) as m from $table")[0]['m'];
 }
 
 function save($table,$col){
@@ -105,14 +105,14 @@ function gt($href){
     header("location:$href");
 }
 
-function chkFile($dir="img",$name="file"){
+function ckf($dir="img",$name="file"){
     if(!empty($_FILES[$name]['tmp_name'])){
         move_uploaded_file($_FILES[$name]['tmp_name'],"./$dir/".$_FILES[$name]['name']);
         $_POST[$name]="./$dir/".$_FILES[$name]['name'];
     }
 }
 
-function pages($now,$pages,$href){
+function pgln($now,$pages,$href){
     if($now>1){
         echo "<a href='$href=".($now-1)."'> < </a>";
     }

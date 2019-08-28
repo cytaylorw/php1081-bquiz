@@ -7,11 +7,21 @@
     - 網頁重導
     - 分頁 ( < 1 2 3 >)
     - 檔案上傳 (包含路徑存回$_POST)
+    - 第三題變數(分級、場次)
 
 2. api.php - 前端表單會將POST內容設計成讓API可以直接存進資料庫，減少API數量
     - 單筆新增或修改
     - 多筆刪除或修改
     - 單筆刪除
+    - 新增訂單(三四題下訂，serialize座位或購物清單，第四題需要unset購物車session)
+    - 有時間先打三(場次下拉式選單、場次已訂座位)、四(登入、刪除購物車)題api
+
+3. c.css - 主要以三、四題會用到的樣式為主
+    - .w-100, .w-80, .ma, .ul-i, .ul-i tabs, tc, input[readonly]
+
+4. j.js - 主要以三、四題常會用到的功能為主，有AJAX所以需要放在body最後面
+    - AJAX 主要是按button刪除和修改名稱(prompt)，id和table統一放在上一層
+    - function gt: 有的版型沒有，有時間就打
 
 ## 筆記
 ### 共用
@@ -19,6 +29,7 @@
     - api?do=edit的多筆修改記得加$col['id']=$key
     - api?do=save的功能設計與base.save一樣共用insert和update，POST記得加id
     - api?do=save檔案都放進img資料夾(第三題?)
+    - 資料庫欄位可加預設值，或直接在表單塞input:hidden
 
 ### 第一題
     - 所有資料庫欄位名稱一樣，name放會直接顯示的文字，file放其他資料(檔案、密碼、連結)
@@ -37,7 +48,8 @@
 ### 第三題
     - 預告片前台須複習
     - 訂票前台須複習，尤其場次部分，還有js(Array.includes(),Array.push(),Array.join())
+    - 訂票結果直接用js產生
 
 ### 第四題
-    - 增加input[readonly] css，訂單前後台欄位全部用input
+    - 增加input[readonly] css，訂單前後台欄位全部用input，下單時api就只需要對購物清單做serialize
     - 訂單購物車使用SESSION，不用AJAX

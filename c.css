@@ -9,13 +9,13 @@
     margin: auto;
 }
 
-.ul-list{
-    list-style-type: none;
+.ul-i{
+    i-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.ul-list .tabs{
+.ul-i .tabs{
     display: inline-block;
     border: 1px solid black;
 }
@@ -30,7 +30,7 @@
     overflow-y: auto;
 }
 
-.tac{
+.tc{
     text-align: center;
 }
 
