@@ -37,3 +37,7 @@
 ### 第三題
     - 預告片前台須複習
     - 訂票前台須複習，尤其場次部分，還有js(Array.includes(),Array.push(),Array.join())
+
+### 第四題
+    - 增加input[readonly] css，訂單前後台欄位全部用input
+    - 訂單購物車用SESSION，不用AJAX
