@@ -5,6 +5,8 @@
 
 第二題：功能不多，也不複雜，也都不相似，所以基本上時間都差不多。
 
+第三題：遇到問題沒有卡太久，可以在4小時內，把所有功能全部做完，不偷工減料。
+
 ## 準備共用檔案
 1. base.php - 函式類，包含Session、SQL操作、和其他較常使用的功能
     - session_start();
@@ -12,7 +14,8 @@
     - 網頁重導
     - 分頁 ( < 1 2 3 >)
     - 檔案上傳 (包含路徑存回$_POST)
-    - 第三題變數(分級、場次)
+    - api內的redirect功能(使用多次又容易打錯)
+    - 第三題變數(分級、場次、動畫效果)
 
 2. api.php - 前端表單會將POST內容設計成讓API可以直接存進資料庫，減少API數量
     - 單筆新增或修改
@@ -22,7 +25,9 @@
     - 有時間先打三(場次下拉式選單、場次已訂座位)、四(登入、刪除購物車)題api
 
 3. c.css - 主要以三、四題會用到的樣式為主
-    - .w-100, .w-80, .ma, .ul-i, .ul-i .tabs, tc, input[readonly]
+    - .w100, .w80, .w49, .ma, .uli, .uli .tabs, tc, .dn, .dib
+    - 第三題座位css： .bk, .em
+    - 第四題css： input[readonly]
 
 4. j.js - 主要以三、四題常會用到的功能為主，有AJAX所以需要放在body最後面
     - AJAX 主要是按button刪除和修改名稱(prompt)，id和table統一放在上一層
@@ -33,8 +38,9 @@
     - base.save記得檢查$col空值
     - api?do=edit的多筆修改記得加$col['id']=$key
     - api?do=save的功能設計與base.save一樣共用insert和update，POST記得加id
-    - api?do=save檔案都放進img資料夾(第三題?)
+    - api?do=save檔案都放進img資料夾，可以多增加第三題院線片的poster,trailer
     - 資料庫欄位可加預設值，或直接在表單塞input:hidden
+    - 使用常用的欄位(id,name,file,sh,ord)準備測試用表格，其他表格可以直接複製在新增其他欄位
 
 ### 第一題
     - 所有資料庫欄位名稱一樣，name放會直接顯示的文字，file放其他資料(檔案、密碼、連結)
@@ -54,7 +60,8 @@
     - 預告片前台須複習，動畫都一樣。
     - 預告片輪播控制按鈕採用類似第一題的解法，左右鍵用&ltrif;(left triangle full)和&rtrif(right triangle full);
     - 訂票前台須複習，尤其場次部分，還有js(Array.includes(),Array.push(),Array.join())
-    - 訂票結果直接用js產生，可以少打id和放值得部分
+    - 訂票結果直接用js產生，可以少打id和選擇元素的部分
+    - 院線片海報和預告片直接放進img資料夾
 
 ### 第四題
     - 增加input[readonly] css，訂單前後台欄位全部用input，下單時可以直接submit，api只需要對購物清單做serialize

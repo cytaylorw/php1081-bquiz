@@ -1,0 +1,43 @@
+.ul-i{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ul-i .tabs{
+    display: inline-block;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.w-80{
+    width: 80%;
+}
+
+.w-49{
+    width: 49%;
+}
+
+.ma{
+    margin: auto;
+}
+
+.tc{
+    text-align: center;
+}
+
+input[readonly]{
+    background: transparent;
+    border: none;
+    width: 200px;
+}
+
+.dn{
+    display: none;
+}
+
+.dib{
+    display: inline-block;
+}
