@@ -15,7 +15,7 @@ $(".ed").on("click",function(){
     let id = $(this).parent().data("id");
     let name = prompt("請輸入");
     if(name != null){
-        $.post("api.php?do=del&tb="+tb,{id,name},function(){
+        $.post("api.php?do=save&tb="+tb,{id,name},function(){
             location.reload();
         })
     }

@@ -1,0 +1,53 @@
+.uli{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.uli .tabs{
+    display: inline-block;
+    padding: 5px;
+}
+
+.dn{
+    display: none;
+}
+
+.dib{
+    display: inline-block;
+}
+
+.w100{
+    width: 100%;
+}
+.w80{
+    width: 80%;
+}
+.w49{
+    width: 49%;
+}
+
+input[readonly]{
+    background: transparent;
+    border: none;
+    width: 80px;
+}
+
+.ma{
+    margin: auto;
+}
+
+.tc{
+    text-align: center;
+}
+
+.em{
+    width: 40px;
+    height: 60px;
+    background: url("./icon/03D02.png") center no-repeat;
+}
+.bk{
+    width: 40px;
+    height: 60px;
+    background: url("./icon/03D03.png") center no-repeat;
+}

@@ -5,9 +5,11 @@
 
 第二題：功能不多，也不複雜，也都不相似，所以基本上時間都差不多。
 
-第三題：遇到問題沒有卡太久，可以在4小時內，把所有功能全部做完，不偷工減料。
+第三題：遇到問題沒有卡太久，可以在4小時內，實際約3.5小時，把所有功能全部做完，不偷工減料。
 
-## 準備共用檔案
+第四題：練習對題目沒有很熟悉，比第三題花更多時間看題目，還是可以剛好在4小時內，把所有功能全部做完，不偷工減料。
+
+## 準備共用檔案(90min)
 1. base.php - 函式類，包含Session、SQL操作、和其他較常使用的功能
     - session_start();
     - SQL (pdo,queryAll,find,save,del) 其他延伸functions
@@ -16,6 +18,7 @@
     - 檔案上傳 (包含路徑存回$_POST)
     - api內的redirect功能(使用多次又容易打錯)
     - 第三題變數(分級、場次、動畫效果)
+    - 第四題變數(今天日期、兩個驗證碼、後台選單[do=>text])
 
 2. api.php - 前端表單會將POST內容設計成讓API可以直接存進資料庫，減少API數量
     - 單筆新增或修改
@@ -30,10 +33,14 @@
     - 第四題css： input[readonly]
 
 4. j.js - 主要以三、四題常會用到的功能為主，有AJAX所以需要放在body最後面
-    - AJAX 主要是按button刪除和修改名稱(prompt)，id和table統一放在上一層
-    - function gt: 有的版型沒有，有時間就打
+    - AJAX： 按button刪除、修改名稱(prompt)、刪除購物車、上下架，id和table統一放在上一層
+    - function gt： 有的版型沒有，有時間就打
 
-## 筆記
+5. 有時間就先用測試表格複製好三四題表格
+    - 三： poster, mv, ord
+    - 四： admin, mem, th, cat, bot, ord
+
+## 考試(4hr)筆記
 ### 共用
     - base.save記得檢查$col空值
     - api?do=edit的多筆修改記得加$col['id']=$key
@@ -62,7 +69,11 @@
     - 訂票前台須複習，尤其場次部分，還有js(Array.includes(),Array.push(),Array.join())
     - 訂票結果直接用js產生，可以少打id和選擇元素的部分
     - 院線片海報和預告片直接放進img資料夾
+    - 順序： 預告片後台前台 > 院線片後台前台 > 訂票前台後台
 
 ### 第四題
-    - 增加input[readonly] css，訂單前後台欄位全部用input，下單時可以直接submit，api只需要對購物清單做serialize
-    - 訂單購物車使用SESSION，不用AJAX
+    - 增加input[readonly] css，訂單前後台欄位全部用input，下單時可以直接submit，api只需要對購物清單做serialize，後台也可以複製前台來改
+    - 購物車使用SESSION，不用AJAX
+    - 刪除購物車項目時，記得清除url內的id
+    - 記得複製bot.png
+    - 順序(簡單的看到就做，當休息)： 會員前台後台 > 管理者後台 > 商品後台前台 > 購物前台後台
