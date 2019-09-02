@@ -1,0 +1,46 @@
+.w49{
+    width: 49%
+}
+.w80{
+    width: 80%
+}
+.w100{
+    width: 100%
+}
+.ma{
+    margin: auto;
+}
+.dn{
+    display: none;
+}
+.dib{
+    display: inline-block;
+}
+.uli{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.uli .tabs{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+.tc{
+    text-align: center;
+}
+input[readonly]{
+    width: 150px;
+    background: transparent;
+    border: none;
+}
+.bk{
+    width: 40px;
+    height: 60px;
+    background: url("./icon/03D03.png") center no-repeat;
+}
+.em{
+    width: 40px;
+    height: 60px;
+    background: url("./icon/03D02.png") center no-repeat;
+}
