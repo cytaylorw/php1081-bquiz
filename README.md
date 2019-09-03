@@ -30,7 +30,7 @@
 
 3. c.css - 主要以三、四題會用到的樣式為主
     - .w100, .w80, .w49, .ma, .uli, .uli .tabs, tc, .dn, .dib
-    - 第三題座位css： .bk, .em
+    - 第三題座位css： .bk, .em, .sm, (.bg, .bgw), (.bw, .bw td), (.bb, .bb td)
     - 第四題購物css： input[readonly]
 
 4. j.js - 主要以三、四題常會用到的功能為主，有AJAX所以需要放在body最後面
@@ -55,15 +55,15 @@
     - base.save記得檢查$col空值
     - api?do=edit的多筆修改記得加$col['id']=$key
     - api?do=save的功能設計與base.save一樣共用insert和update，POST記得加id
-    - api?do=save檔案都放進img資料夾，可以多增加第三題院線片的poster,trailer
+    - api?do=save檔案都放進img資料夾，可多增加第三題院線片的post,trail
     - 資料庫欄位可加預設值，或直接在表單塞input:hidden
+    - 後台多項顯示採用input:hidden#id[sh][value=0]+input:checkbox#id[sh][value=1]，checkbox沒有被勾選不會有值，被勾選1會蓋掉0
 
 ### 第一題(4hr)
     - 所有資料庫欄位名稱一樣，name放會直接顯示的文字，file放其他資料(檔案、密碼、連結)
     - 後台功能以資料夾分類命名，下面再分home,new,edit，複製後就只需要改資料夾名稱
     - 整個目錄複製後修改時，到最新消息(含)之前，都只註解掉不需要的程式碼
     - 後台圖片和動畫標籤都用embed，embed都支援，減少修改
-    - 後台多項顯示採用input:hidden#id[sh][value=0]+input:checkbox#id[sh][value=1]，checkbox沒有被勾選不會有值，被勾選1會蓋掉0
     - 前台選單的js在js.js，其他都在寫在行內
     - 前台校園映像控制判斷有bug
 
@@ -74,7 +74,9 @@
 
 ### 第三題(4hr)
     - 預告片前台須複習，動畫都一樣。
-    - 預告片輪播控制按鈕採用類似第一題的解法，左右鍵用&ltrif;(left triangle full)和&rtrif;(right triangle full);
+    - 預告片輪播控制按鈕採用類似第一題的解法，左右鍵用&ltrif;(left triangle full)和&rtrif;(right triangle full)
+    - 預告片圖片寬固定大小，show/hide和slideDown/slideUp才會有不同效果
+    - 預告片記得放片名
     - 訂票前台須複習，尤其場次部分，還有js(Array.includes(),Array.push(),Array.join())
     - 訂票結果直接用js產生，可以少打id和選擇元素的部分
     - 院線片海報和預告片直接放進img資料夾
@@ -85,4 +87,4 @@
     - 購物車使用SESSION，不用AJAX
     - 刪除購物車項目時，記得清除url內的id
     - 記得複製bot.png
-    - 順序(簡單的看到就做，當休息)： 會員前台後台 > 管理者後台 > 商品後台前台 > 購物前台後台
+    - 順序(簡單的看到就做，當休息)： 會員前台後台 > 管理者後台前台 > 商品後台前台 > 購物前台後台

@@ -1,15 +1,21 @@
+<style>
+    .bg{
+        width: 240px;
+    }
+</style>
+
 <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
     <span class="rb tab" style="width:95%;">
-        <div style="height:200px">
+        <div style="height:270px">
         <?php
             $rs1 = f("post",["sh"=>1]);
             foreach($rs1 as $k => $v){
                 if($k == 0){
 
-                    echo "<img class='bg' src='".$v['file']."' style='height:200px'>";
+                    echo "<div class='bg tc'><img src='".$v['file']."' style='height:250px'>".$v['name']."</div>";
                 }else{
-                    echo "<img class='bg dn' src='".$v['file']."' style='height:200px'>";
+                    echo "<div class='bg dn tc'><img src='".$v['file']."' style='height:250px'>".$v['name']."</div>";
 
                 }
             }

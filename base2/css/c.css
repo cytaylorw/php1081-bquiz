@@ -1,14 +1,12 @@
 .w49{
-    width: 49%
+    width: 49%;
+    display: inline-block;
 }
 .w80{
-    width: 80%
+    width: 80%;
 }
 .w100{
-    width: 100%
-}
-.ma{
-    margin: auto;
+    width: 100%;
 }
 .dn{
     display: none;
@@ -16,33 +14,31 @@
 .dib{
     display: inline-block;
 }
+.ma{
+    margin: auto;
+}
 .uli{
     list-style-type: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 .uli .tabs{
     display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-.tc{
-    text-align: center;
 }
 input[readonly]{
-    width: 150px;
     background: transparent;
     border: none;
-}
-.bk{
-    width: 40px;
-    height: 60px;
-    background: url("./icon/03D03.png") center no-repeat;
+    width: 150px;
 }
 .em{
     width: 40px;
     height: 60px;
     background: url("./icon/03D02.png") center no-repeat;
+}
+.bk{
+    width: 40px;
+    height: 60px;
+    background: url("./icon/03D03.png") center no-repeat;
 }
 .sm{
     width: 80px;
@@ -51,4 +47,13 @@ input[readonly]{
 .bg, .bgw{
     width: 200px;
     height: 240px;
+}
+.bw, .bw td{
+    border: 1px solid white;
+}
+.bb, .bb td{
+    border: 1px solid black;
+}
+.tc{
+    text-align: center;
 }

@@ -14,7 +14,7 @@
             <td><img src="./icon/03C0<?=$v['rate']+1;?>.png" style="width:30px"></td>
             <!-- <td><input type="text" name="<?=$v['id'];?>[name]" value="<?=$v['name'];?>"></td> -->
             <td><ul class="ul-i">
-                <li>片名：<?=$v['name'];?>片長：<?=$v['dur'];?>上映時間：<?=$v['sdate'];?></li>
+                <li>片名：<?=$v['name'];?> 片長：<?=$v['dur'];?> 上映時間：<?=$v['sdate'];?></li>
                 <li>劇情簡介：<?=$v['intro'];?></li>
                 <li>
                     <input type="number" name="<?=$v['id'];?>[ord]" value="<?=$v['ord'];?>">
